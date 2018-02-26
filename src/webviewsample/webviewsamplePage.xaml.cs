@@ -10,6 +10,8 @@ namespace webviewsample
         {
             InitializeComponent();
 
+            // We rely on the built-in service lcoator in this example, but you could just
+            // as easily locate this service using DI and launch from your ViewModel
             service = DependencyService.Get<Abstractions.INativeBrowserService>();
 
             Launch_Button.Clicked += (sender, e) => 

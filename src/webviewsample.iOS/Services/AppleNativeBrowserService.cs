@@ -17,6 +17,8 @@ namespace webviewsample.iOS.Services
             var sfViewController = new SFSafariViewController(destination);
 
             var window = UIApplication.SharedApplication.KeyWindow;
+
+            // TODO: Dangerous? Genuinely not sure if this will work after navigating
             var controller = window.RootViewController;
 
             controller.PresentViewController(sfViewController, true, null);

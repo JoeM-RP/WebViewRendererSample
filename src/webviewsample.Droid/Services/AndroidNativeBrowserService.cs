@@ -15,6 +15,8 @@ namespace webviewsample.Droid.Services
 
         public void LaunchNativeEmbeddedBrowser(string url)
         {
+            // TODO: We need the current actiivty. Forms.Context is deprecated, but I had issues
+            // trying to use Android.App.Appllication.Context when castign to Activity, sooo...?
             var activity = Forms.Context as Activity;
 
             if (activity == null) return;
@@ -22,16 +24,15 @@ namespace webviewsample.Droid.Services
             customTabs = new CustomTabsActivityManager(activity);
             customTabs.CustomTabsServiceConnected += (name, client) =>
             {
-
+                // Add custom options here, such as Share
             };
 
             var mgr = new CustomTabsActivityManager(activity);
             mgr.CustomTabsServiceConnected += delegate {
                 mgr.LaunchUrl(url);
             };
-            mgr.BindService();
 
-            //activity.StartActivity(customTabs);
+            mgr.BindService();
         }
     }
 }
